@@ -41,6 +41,15 @@ public class MainActivity extends BaseActivity {
         initObservers();
         initEvents();
         initViews();
+        eventClick();
+    }
+
+    private void eventClick() {
+        findViewById(R.id.btnChatMessage).setOnClickListener(v -> navigateChatMessage());
+    }
+
+    private void navigateChatMessage() {
+        startActivity(new Intent(MainActivity.this, ChatBotActivity.class));
     }
 
     private void initEvents() {

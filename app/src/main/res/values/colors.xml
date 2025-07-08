@@ -37,5 +37,9 @@
     <color name="bb_inActiveBottomBarItemColor">#747474</color>
     <color name="bb_darkBackgroundColor">#212121</color>
     <color name="bb_tabletRightBorderDark">#505050</color>
+    <color name="color_chat_message">#2538C8</color>
+    <color name="color_chat_left">#F1F7FF</color>
+    <color name="color_black_1">#0D082C</color>
+    <color name="color_time_message">#660D082C</color>
 
 </resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_avatar_ai"
+            android:src="@drawable/bg_avatar_assistant" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAssistant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/txt_assistant"
+        android:textColor="@color/color_black_1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/cardAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvContentLeft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/bg_chat_left"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/color_black_1"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvAssistant"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssistant"
+        app:layout_constraintWidth_default="wrap"
+        tools:text="I'm doing well, thank you! How can I help you today?" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTimeLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/color_time_message"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvContentLeft"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tvAssistant"
+        app:layout_constraintTop_toBottomOf="@+id/tvContentLeft"
+        app:layout_constraintWidth_default="wrap"
+        tools:text="08:16 AM" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieTyping"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".0"
+        app:layout_constraintStart_toStartOf="@+id/tvAssistant"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssistant"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_typing" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.773" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
