@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	package="com.nhn.fitness">
+	xmlns:tools="http://schemas.android.com/tools">
 <!--  AIzaSyAQHOhnBWSTR7AaKwSr2r4l3_Qqreefnwg-->
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -31,6 +30,7 @@
 		<uses-library android:name="org.apache.http.legacy" android:required="false"/>
 		<service
 			android:name=".service.MyFirebaseMessagingService"
+			android:exported="true"
 			android:stopWithTask="false">
 			<intent-filter>
 				<action android:name="com.google.firebase.MESSAGING_EVENT" />

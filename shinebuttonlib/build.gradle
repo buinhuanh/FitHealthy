@@ -1,9 +1,9 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
-
+    namespace = "com.sackcentury.shinebuttonlib"
     defaultConfig {
+        compileSdk 34
         minSdkVersion 14
         versionCode 9
         versionName "0.1.9"

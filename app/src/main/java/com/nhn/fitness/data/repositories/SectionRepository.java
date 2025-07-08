@@ -1,6 +1,7 @@
 package com.nhn.fitness.data.repositories;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.nhn.fitness.data.model.Section;
 import com.nhn.fitness.data.model.SectionUser;
@@ -128,8 +129,12 @@ public class SectionRepository {
                     ArrayList<SectionUser> sectionUsers = new ArrayList<>();
                     for (String id : list) {
                         SectionUser sectionUser = AppDatabase.getInstance().sectionUserDao().findByIdWithoutObserve(id);
-                        sectionUser.setData(AppDatabaseConst.getInstance().sectionDao().findByIdWithoutObserve(id));
-                        sectionUsers.add(sectionUser);
+                        if (sectionUser != null) {
+                            sectionUser.setData(AppDatabaseConst.getInstance().sectionDao().findByIdWithoutObserve(id));
+                            sectionUsers.add(sectionUser);
+                        } else {
+                            Log.w("Log_SectionRepo", "Không tìm thấy SectionUser với id: " + id);
+                        }
                     }
                     return Flowable.just(sectionUsers);
                 })

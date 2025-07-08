@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
 
+    namespace = "com.ads.control"
     defaultConfig {
+        compileSdk 34
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 35
         versionCode 1
         versionName "1.6"
         multiDexEnabled true

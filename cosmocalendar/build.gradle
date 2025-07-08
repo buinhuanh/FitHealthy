@@ -1,9 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
+    namespace = "com.applikeysolutions.customizablecalendar"
 
     defaultConfig {
+        compileSdk 34
         minSdkVersion 16
         versionCode 1
         versionName "1.0.0"

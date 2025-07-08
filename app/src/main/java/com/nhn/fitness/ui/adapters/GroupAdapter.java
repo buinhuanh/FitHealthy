@@ -1,5 +1,6 @@
 package com.nhn.fitness.ui.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class GroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         GroupViewModel groupViewModel = groups.get(position);
         switch (groupViewModel.getType()) {
             case GroupViewModel.TYPE_GROUP_SECTION:
+                Log.d("Log_ListData", "GroupViewModel.TYPE_GROUP_SECTION");
                 ((GroupSectionViewHolder) holder).bind((GroupSectionModel) groupViewModel.getData());
                 break;
             case GroupViewModel.TYPE_FRAGMENT:

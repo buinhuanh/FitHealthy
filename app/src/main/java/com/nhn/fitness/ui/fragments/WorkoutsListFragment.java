@@ -2,10 +2,13 @@ package com.nhn.fitness.ui.fragments;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +27,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class WorkoutsListFragment extends BaseFragment {
@@ -31,6 +35,7 @@ public class WorkoutsListFragment extends BaseFragment {
     private ArrayList<GroupViewModel> data;
     private RecyclerView recyclerView;
     private GroupAdapter adapter;
+
 
     public WorkoutsListFragment() {
         // Required empty public constructor
@@ -58,14 +63,18 @@ public class WorkoutsListFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (rootView == null) {
-            rootView = inflater.inflate(R.layout.fragment_workouts_list, container, false);
-            initViews();
-            initObservers();
-            initEvents();
-            initData();
-        }
-        return rootView;
+        return inflater.inflate(R.layout.fragment_workouts_list, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.rv_list);
+        initViews();
+        initObservers();
+        initEvents();
+        initData();
+
     }
 
     private void initData() {
@@ -121,25 +130,12 @@ public class WorkoutsListFragment extends BaseFragment {
         );
 
 
+        data.add(new GroupViewModel(
+                GroupViewModel.TYPE_GROUP_SECTION,
+                new GroupSectionModel(0, getString(R.string.thigh_workout), Arrays.asList("8", "9", "10"))
+        ));
 
-
-
-        data.add(
-                new GroupViewModel(
-                        GroupViewModel.TYPE_GROUP_SECTION,
-                        new GroupSectionModel(
-                                0,
-                                getString(R.string.thigh_workout),
-                                new ArrayList<String>() {{
-                                    add("8");
-                                    add("9");
-                                    add("10");
-
-                                }}
-                        )
-                )
-        );
-
+        Log.d("Log_ListData", "data: " + data.size());
         adapter.notifyDataSetChanged();
     }
 
@@ -147,7 +143,6 @@ public class WorkoutsListFragment extends BaseFragment {
     protected void initViews() {
         super.initViews();
         data = new ArrayList<>();
-        recyclerView = rootView.findViewById(R.id.rv_list);
         recyclerView.setLayoutManager(new PreCachingLayoutManager(getContext(), ViewUtils.getHeightDevicePixel(getActivity()) * 2));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setItemViewCacheSize(5);

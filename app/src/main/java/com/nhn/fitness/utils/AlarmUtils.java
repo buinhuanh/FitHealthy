@@ -18,7 +18,7 @@ public class AlarmUtils {
     public static void cancel(Context context, int id) {
         Intent intent = new Intent(context, AlarmReceiver.class);
         intent.setAction(ACTION_AUTO_START_ALARM);
-        PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(sender);
     }
@@ -27,7 +27,7 @@ public class AlarmUtils {
         Intent intent = new Intent(context, AlarmReceiver.class);
         intent.setAction(ACTION_AUTO_START_ALARM);
         intent.putExtra("id", id);
-        PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarm.cancel(sender);
         AlarmManagerCompat.setExactAndAllowWhileIdle(alarm, AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
