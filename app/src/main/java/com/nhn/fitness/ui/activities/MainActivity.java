@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -41,6 +42,15 @@ public class MainActivity extends BaseActivity {
         initObservers();
         initEvents();
         initViews();
+        eventClick();
+    }
+
+    private void eventClick() {
+        findViewById(R.id.btnChatMessage).setOnClickListener(v -> navigateChatMessage());
+    }
+
+    private void navigateChatMessage() {
+
     }
 
     private void initEvents() {
